@@ -13,6 +13,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* 
         <Stack.Screen
           options= {{ headerShown: false }}
           name = "OnBoarding"
@@ -28,6 +29,7 @@ export default function App() {
           name = "ForgotPassword"
           component = { ForgotPasswordScreen }
         />
+        */}
         <Stack.Screen
           options= {{ headerShown: false }}
           name = "Home"

@@ -1,8 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Keyboard, KeyboardAvoidingView, Text, View } from "react-native";
+import { Keyboard, KeyboardAvoidingView, Text, Touchable, View } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { auth } from "../../firebase/firebase";
+import NavBar from "../../NavBar";
 import { styles } from "./styles";
 
 const HomeScreen = () => {
@@ -38,34 +39,36 @@ const HomeScreen = () => {
             <View>
                 <Text style={ styles.resourcesHeader }>RESOURCES</Text>
             </View>
-            
 
-            {/* profile button section */}
-            <View style={ styles.profileButtonContainer }>
-                <TouchableOpacity 
-                    style={ styles.profileButton }
-                    onPress={ () => { }}
-                >
-                    <Text>Profile</Text>
-                </TouchableOpacity>
+            {/* profile button and search bar section */}
+            <View style={ styles.profileSearchBarDiv }>
+
+                {/* profile button section */}
+                <View style={ styles.profileButtonContainer }>
+                    <TouchableOpacity 
+                        style={ styles.profileButton }
+                        onPress={ () => { }}
+                    >
+                        <Text>Profile</Text>
+                    </TouchableOpacity>
+                </View>
+
+                {/* search bar */}
+                <View style = { styles.searchContainer }>
+                    <TextInput
+                        placeholder = "Search"
+                        placeholderTextColor = 'white'
+                        maxLength = { 100 }
+                        value = { searchQuery }
+                        onChangeText = { text => setSearchQuery(text) }
+                        onSubmitEditing = { searchForUserQuery }
+                        style = { styles.input }
+                    />
+                </View>
+
             </View>
 
-            {/* search bar */}
-            <View style = { styles.searchContainer }>
-                <TextInput
-                    placeholder = "Search"
-                    placeholderTextColor = 'white'
-                    maxLength = { 100 }
-                    value = { searchQuery }
-                    onChangeText = { text => setSearchQuery(text) }
-                    onSubmitEditing = { searchForUserQuery }
-                    style = { styles.input }
-                />
-            </View>
-
-            
-
-            {/* sign out section */}
+            {/* sign out section
             <View style={ styles.container }>
                 <Text>Email: { auth.currentUser?.email }</Text>
 
@@ -76,6 +79,7 @@ const HomeScreen = () => {
                     </Text>
                 </TouchableOpacity>
             </View>
+            */}
 
             {/* favorited categoires section */}
             <View style={ styles.favoritesSection }>
@@ -83,13 +87,21 @@ const HomeScreen = () => {
             </View>
 
             {/* categories grid section */}
-            <View style={ styles.categoriesGrid }>
+            <View style={ styles.categoriesContainer }>
                 <Text>Categories Section</Text>
+                <View style={ styles.categoriesGrid }>
+
+                    <TouchableOpacity style={ styles.categoryButton }>
+                        <Text>This is a button</Text>
+                    </TouchableOpacity>
+                    
+
+                </View>
             </View>
 
             {/* navbar section */}
-            <View>
-                <Text>Navbar</Text>
+            <View style={ styles.navBarDiv}>
+                <NavBar />
             </View>
 
         </KeyboardAvoidingView>
