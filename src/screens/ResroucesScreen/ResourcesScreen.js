@@ -1,10 +1,74 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Keyboard, KeyboardAvoidingView, Text, Touchable, View } from "react-native";
-import { ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { FlatList, ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { auth } from "../../firebase/firebase";
 import NavBar from "../../NavBar";
 import { styles } from "./styles";
+
+let favoritedResrouces = [];
+
+//set up resource buttons
+const HousingResourceButton = () => {
+    const [isFavorited, setIsFavorited] = useState(false);
+
+    return(
+        //a container for both the resource and the favorite button
+        <View>
+            {/* this is the button to favorite/unfavorite an item */}
+            <TouchableOpacity
+                style={ styles.resourceFavoriteButton }
+                onPress={() => { 
+                    if(isFavorited) {
+                        //add to favorite section
+                        
+
+                        setIsFavorited(false);
+                        console.log(isFavorited);
+                    }
+                    else {
+                        //remove from favorite section
+
+
+                        setIsFavorited(true);
+                        console.log(isFavorited);
+                    }
+                }}
+            ></TouchableOpacity>
+
+            {/* this is the button to bring up the respective resource's page */}
+            <TouchableOpacity
+                style={styles.categoryButton}
+                onPress={()  => { }}
+            >
+                <Text>Housing Resources</Text>
+            </TouchableOpacity>
+        </View>
+    )
+}
+
+const LGBTQResourceButton = () => {
+    let favorited = false;
+
+    return(
+        <View>
+            
+            <TouchableOpacity
+                style={ styles.resourceFavoriteButton }
+                onPress={() => { }}
+            ></TouchableOpacity>
+
+            <TouchableOpacity
+                style={styles.categoryButton}
+                onPress={()  => { 
+                    //display LGBTQ+ page
+                }}
+            >
+                <Text>LGBTQ+</Text>
+            </TouchableOpacity>
+        </View>
+    )
+}
 
 const ResourcesScreen = () => {
     const navigation = useNavigation();
@@ -87,9 +151,10 @@ const ResourcesScreen = () => {
                     {/* the grid that holds the buttons */}
                     <View style={ styles.favoriteCatgoriesContainer }>
 
-                        <ScrollView horizontal='true'>
+                        <FlatList data={favoritedResrouces} 
+                        horizontal={ true }>
 
-                        </ScrollView>
+                        </FlatList>
 
                     </View>
 
@@ -107,43 +172,9 @@ const ResourcesScreen = () => {
                             {/* col 1 */}
                             <View style={ styles.categoryButtonCol }>
 
-                                <TouchableOpacity 
-                                    style={ styles.categoryButton }
-                                    onPres={() => { console.log("housing services button clicked"); }}    
-                                >   
-                                    {/* the button to add a category to the favorites section */}
-                                    <TouchableOpacity 
-                                        style={ styles.favoriteButton }
-                                        onPress={() => { console.log("favorite button clicked"); }}
-                                    ></TouchableOpacity>
+                                <HousingResourceButton />
 
-                                    <Text>Housing Services</Text>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity 
-                                    style={ styles.categoryButton }
-                                    onPres={() => { }}    
-                                >
-                                    <TouchableOpacity 
-                                        style={ styles.favoriteButton }
-                                        onPress={() => { }}
-                                    ></TouchableOpacity>
-
-                                    <Text>Housing Services</Text>
-
-                                </TouchableOpacity>
-
-                                <TouchableOpacity 
-                                    style={ styles.categoryButton }
-                                    onPres={() => { }}    
-                                >
-                                    <TouchableOpacity 
-                                        style={ styles.favoriteButton }
-                                        onPress={() => { }}
-                                    ></TouchableOpacity>
-
-                                    <Text>Housing Services</Text>
-                                </TouchableOpacity>
+                                <LGBTQResourceButton />
 
                             </View>
 

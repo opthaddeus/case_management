@@ -23,28 +23,28 @@ const styles = StyleSheet.create( {
     resourceHeader: {
         borderColor: 'green',
         borderWidth: 1,
-        flex: 1,
+        flex: 0.5,
         flexDirection: 'row',
         justifyContent: 'center',
     },
     profileAndSearchBarContainer: {
         flexDirection: 'row',
-        justifyContent: 'center',
         flex: 1,
     },
     profileButton: {
         borderColor: 'blue',
         borderWidth: 1,
         flexDirection: 'row',
+        flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
     },
     searchBar: {
         borderColor: 'purple',
         borderWidth: 1,
-        flex: 1,
-        height: 60,
-        width: '100%',
         backgroundColor: 'white',
+        borderRadius: 10,
+        flex: 1,
     },
     favoritesContainer: {
         borderColor: 'red',
@@ -70,6 +70,16 @@ const styles = StyleSheet.create( {
         flexDirection: 'row',
         justifyContent: 'space-evenly'
     },  
+    resourceFavoriteButton: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        borderColor: 'red',
+        borderWidth: 1,
+        height: 20,
+        width: 20,
+        borderRadius: 10,
+    },
     categoryButton: {
         borderColor: 'black',
         borderWidth: 1,
