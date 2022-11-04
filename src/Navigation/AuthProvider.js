@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     return (
         <AuthContext.Provider
-            value = {{
+            value={{
                 user,
                 setUser,
                 login: async (email, password) => {
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
                 }
             }}
         >
-            { children }
+            {children}
         </AuthContext.Provider>
     )
 }
