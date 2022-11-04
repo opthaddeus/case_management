@@ -9,10 +9,10 @@ import { styles } from "./styles";
 const RegistrationScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName ] = useState('');
+    const [name, setName] = useState('');
     const navigation = useNavigation();
 
-    useEffect( () => {
+    useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) navigation.navigate("Home");
         })
@@ -32,63 +32,63 @@ const RegistrationScreen = () => {
 
     return (
         <KeyboardAvoidingView
-            style = { styles.container }
-            behavior = "padding">
+            style={styles.container}
+            behavior="padding">
 
-            <View style = { styles.iconContainer }>
-                <UserIcon width = { 50 } height = { 50 }>
+            <View style={styles.iconContainer}>
+                <UserIcon width={50} height={50}>
                 </UserIcon>
             </View>
 
-            <Text style = { styles.signUpPrompt }>Sign up</Text>
-            <View style = { styles.inputContainer }>
+            <Text style={styles.signUpPrompt}>Sign up</Text>
+            <View style={styles.inputContainer}>
 
-            <TextInput
-                    placeholder =  "Name"
-                    placeholderTextColor = 'white'
-                    value = { name }
-                    onChangeText = { text => setName(text) }
-                    style = { [styles.input, styles.textInputShadow] }
+                <TextInput
+                    placeholder="Name"
+                    placeholderTextColor='white'
+                    value={name}
+                    onChangeText={text => setName(text)}
+                    style={[styles.input, styles.textInputShadow]}
                 />
                 <TextInput
-                    placeholder = "Email"
-                    placeholderTextColor = 'white'
-                    value = { email }
-                    onChangeText = { text => setEmail(text) }
-                    style = { [styles.input, styles.textInputShadow] }
+                    placeholder="Email"
+                    placeholderTextColor='white'
+                    value={email}
+                    onChangeText={text => setEmail(text)}
+                    style={[styles.input, styles.textInputShadow]}
                 />
                 <TextInput
-                    placeholder =  "Password"
-                    placeholderTextColor = 'white'
-                    value = { password }
-                    onChangeText = { text => setPassword(text) }
-                    style = { [styles.input, styles.textInputShadow] }
+                    placeholder="Password"
+                    placeholderTextColor='white'
+                    value={password}
+                    onChangeText={text => setPassword(text)}
+                    style={[styles.input, styles.textInputShadow]}
                     secureTextEntry
                 />
             </View>
 
-            <Text style = { styles.returningUserContainer}>
-                <Text style = { styles.returningUserPrompt }>Have an account? </Text>
-                <Text style = { styles.loginTextClickable } onPress = { handleLoginScreen }>Log in</Text>
+            <Text style={styles.returningUserContainer}>
+                <Text style={styles.returningUserPrompt}>Have an account? </Text>
+                <Text style={styles.loginTextClickable} onPress={handleLoginScreen}>Log in</Text>
             </Text>
 
-            <View style = { styles.buttonContainer }>
+            <View style={styles.buttonContainer}>
                 <TouchableOpacity
-                    style = { [styles.button, styles.buttonShadow] }
-                    onPress = { handleSignUp }>
-                    <Text style = { styles.buttonText }>Sign up</Text>
+                    style={[styles.button, styles.buttonShadow]}
+                    onPress={handleSignUp}>
+                    <Text style={styles.buttonText}>Sign up</Text>
                 </TouchableOpacity>
             </View>
 
-            <View style = { styles.thaddeusTextContainer }>
-                <Text style = { styles.thaddeusText }>Thaddeus</Text>
-                <Text style = { styles.resourceCenter }>Resource Center</Text>
-                <View style = { styles.flexBox }>
-                    <View style = { styles.lineStyle }/>
+            <View style={styles.thaddeusTextContainer}>
+                <Text style={styles.thaddeusText}>Thaddeus</Text>
+                <Text style={styles.resourceCenter}>Resource Center</Text>
+                <View style={styles.flexBox}>
+                    <View style={styles.lineStyle} />
                     <View>
-                        <Text style = { styles.year }>est. 1975</Text>
+                        <Text style={styles.year}>est. 1975</Text>
                     </View>
-                <View style = { styles.lineStyle }/>
+                    <View style={styles.lineStyle} />
                 </View>
             </View>
 

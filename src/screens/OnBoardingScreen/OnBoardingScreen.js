@@ -12,36 +12,36 @@ const OnBoardingScreen = () => {
 
     return (
         <KeyboardAvoidingView
-            style = { styles.container }
-            behavior = "padding" >
+            style={styles.container}
+            behavior="padding" >
 
-                <View style = { styles.footerContainer }>
-                    <Text style = { styles.footer }>Welcome to _____</Text>
-                    <Text style = { styles.footer }>All your information in one spot</Text>
-                </View>
+            <View style={styles.footerContainer}>
+                <Text style={styles.footer}>Welcome to _____</Text>
+                <Text style={styles.footer}>All your information in one spot</Text>
+            </View>
 
-                <View style = { styles.buttonContainer }>
-                    <TouchableOpacity
-                        onPress = { handleLoginScreen }
-                        style = { [styles.button, styles.buttonShadow] }>
-                            <Text style = { styles.buttonText }>Let's go!</Text>
-                    </TouchableOpacity>
-                </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity
+                    onPress={handleLoginScreen}
+                    style={[styles.button, styles.buttonShadow]}>
+                    <Text style={styles.buttonText}>Let's go!</Text>
+                </TouchableOpacity>
+            </View>
 
-                <View style = { styles.lightBlueSquare }/>
-                <View style = { [styles.darkBlueSquare, styles.squareShadow] }/>
+            <View style={styles.lightBlueSquare} />
+            <View style={[styles.darkBlueSquare, styles.squareShadow]} />
 
-                <View style = { [styles.thaddeusSquare, styles.shadow] }>
-                    <Text style = { styles.thaddeusText }>Thaddeus</Text>
-                    <Text style = { styles.resourceCenterText }>Resource Center</Text>
-                    <View style = { styles.flexBox }>
-                        <View style = { styles.lineStyle }/>
-                        <View>
-                            <Text style = { styles.year }>est. 1975</Text>
-                        </View>
-                        <View style = { styles.lineStyle }/>
+            <View style={[styles.thaddeusSquare, styles.shadow]}>
+                <Text style={styles.thaddeusText}>Thaddeus</Text>
+                <Text style={styles.resourceCenterText}>Resource Center</Text>
+                <View style={styles.flexBox}>
+                    <View style={styles.lineStyle} />
+                    <View>
+                        <Text style={styles.year}>est. 1975</Text>
                     </View>
+                    <View style={styles.lineStyle} />
                 </View>
+            </View>
         </KeyboardAvoidingView>
     )
 }

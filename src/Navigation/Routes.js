@@ -15,15 +15,15 @@ export default function Routes() {
         if (initializing) setInitializing(false);
         setLoading(false);
     }
-    
+
     useEffect(() => {
         const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
         return subscriber;
     }, []);
-    
+
     return (
         <NavigationContainer>
-            { user ? <MainStack /> : <AuthStack /> }
+            {user ? <MainStack /> : <AuthStack />}
         </NavigationContainer>
     )
 }

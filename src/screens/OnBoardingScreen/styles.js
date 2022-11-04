@@ -3,7 +3,7 @@ import { Dimensions } from "react-native";
 
 let deviceWidth = Dimensions.get('screen').width;
 
-const styles = StyleSheet.create( {
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
@@ -75,7 +75,7 @@ const styles = StyleSheet.create( {
         elevation: 10,
     },
     shadow: {
-        shadowOffset: {width: -2, height: 4},
+        shadowOffset: { width: -2, height: 4 },
         shadowColor: '#000',
         shadowOpacity: 0.2,
         shadowRadius: 3,
@@ -135,6 +135,6 @@ const styles = StyleSheet.create( {
         fontSize: 10,
         alignSelf: 'center',
     }
-} )
+})
 
 export { styles };
