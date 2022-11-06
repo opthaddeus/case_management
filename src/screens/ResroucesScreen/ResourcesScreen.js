@@ -1,88 +1,49 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Keyboard, KeyboardAvoidingView, Text, Touchable, View } from "react-native";
-import { FlatList, ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { FlatList, Keyboard, KeyboardAvoidingView, Text, Touchable, View } from "react-native";
+import { ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { auth } from "../../firebase/firebase";
-import NavBar from "../../NavBar";
 import { styles } from "./styles";
+import { AppointmentsServicesButton, ChurchServicesButton, DonationCenterButton, 
+    EducationServicesButton, EmploymentServicesButton, FoodServicesButton, FormsServicesButton,
+    GovernmentServicesButton, HealthServicesButton, HousingServicesButton, LegalServicesButton, 
+    LGBTQServicesButton, ParentingServicesButton, UtiliesServicesButton } from "./ResourceButtons/ResourceButtons"; 
 
-let favoritedResrouces = [];
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-//set up resource buttons
-const HousingResourceButton = () => {
-    const [isFavorited, setIsFavorited] = useState(false);
-
-    return(
-        //a container for both the resource and the favorite button
-        <View>
-            {/* this is the button to favorite/unfavorite an item */}
-            <TouchableOpacity
-                style={ styles.resourceFavoriteButton }
-                onPress={() => { 
-                    if(isFavorited) {
-                        //add to favorite section
-                        
-
-                        setIsFavorited(false);
-                        console.log(isFavorited);
-                    }
-                    else {
-                        //remove from favorite section
-
-
-                        setIsFavorited(true);
-                        console.log(isFavorited);
-                    }
-                }}
-            ></TouchableOpacity>
-
-            {/* this is the button to bring up the respective resource's page */}
-            <TouchableOpacity
-                style={styles.categoryButton}
-                onPress={()  => { }}
-            >
-                <Text>Housing Resources</Text>
-            </TouchableOpacity>
-        </View>
-    )
-}
-
-const LGBTQResourceButton = () => {
-    let favorited = false;
-
-    return(
-        <View>
-            
-            <TouchableOpacity
-                style={ styles.resourceFavoriteButton }
-                onPress={() => { }}
-            ></TouchableOpacity>
-
-            <TouchableOpacity
-                style={styles.categoryButton}
-                onPress={()  => { 
-                    //display LGBTQ+ page
-                }}
-            >
-                <Text>LGBTQ+</Text>
-            </TouchableOpacity>
-        </View>
-    )
-}
 
 const ResourcesScreen = () => {
+
     const navigation = useNavigation();
 
     const [searchQuery, setSearchQuery] = useState('');
 
-    //sign the user out
+    // render item for favorites FlatList
+    const resourceButtonRenderItem = ( {item} ) => {
+
+        if(item.favorited) {
+            <TouchableOpacity 
+                style={ styles.categoryButton }
+            >
+                <Text>{item.buttonName}</Text>
+            </TouchableOpacity>
+        }
+        else {
+            <></>
+        }
+
+    }
+
+    // sign the user out
     const handleSignOut = () => {
         auth.signOut().then( () => {
             navigation.replace("Login")
         }).catch(error => alert(error.message));
     }
 
-    //search the database/services for the user's query
+
+    // search the database/services for the user's query
     const searchForUserQuery = () => {
 
         //for now, just log the query
@@ -111,6 +72,7 @@ const ResourcesScreen = () => {
                 </TouchableOpacity>
             </View>
             */}
+
 
             {/* a spacer to conform to multiple phone screen sizes */}
             <View style={ styles.topSpacer }></View>
@@ -143,6 +105,8 @@ const ResourcesScreen = () => {
 
                 </View>
 
+
+
                 {/* favorites section */}
                 <View style={ styles.favoritesContainer }>
 
@@ -151,14 +115,16 @@ const ResourcesScreen = () => {
                     {/* the grid that holds the buttons */}
                     <View style={ styles.favoriteCatgoriesContainer }>
 
-                        <FlatList data={favoritedResrouces} 
-                        horizontal={ true }>
-
-                        </FlatList>
+                        <FlatList 
+                            horizontal={ true }
+                            //data={ }
+                            //renderItem={( {item, index}) => {}}
+                        />
 
                     </View>
-
                 </View>
+
+
 
                 {/* categories section */}
                 <View style={ styles.categoriesContainer }>
@@ -172,96 +138,44 @@ const ResourcesScreen = () => {
                             {/* col 1 */}
                             <View style={ styles.categoryButtonCol }>
 
-                                <HousingResourceButton />
+                                <AppointmentsServicesButton />
 
-                                <LGBTQResourceButton />
+                                <EducationServicesButton />
+
+                                <FormsServicesButton />
+
+                                <HousingServicesButton />
+
+                                <ParentingServicesButton />
 
                             </View>
 
                             {/* col 2 */}
                             <View style={ styles.categoryButtonCol }>
 
-                                <TouchableOpacity 
-                                    style={ styles.categoryButton }
-                                    onPres={() => { }}    
-                                >   
-                                    {/* the button to add a category to the favorites section */}
-                                    <TouchableOpacity 
-                                        style={ styles.favoriteButton }
-                                        onPress={() => { }}
-                                    ></TouchableOpacity>
+                                <ChurchServicesButton />
 
-                                    <Text>Housing Services</Text>
-                                </TouchableOpacity>
+                                <EmploymentServicesButton />
 
-                                <TouchableOpacity 
-                                    style={ styles.categoryButton }
-                                    onPres={() => { }}    
-                                >
-                                    <TouchableOpacity 
-                                        style={ styles.favoriteButton }
-                                        onPress={() => { }}
-                                    ></TouchableOpacity>
+                                <GovernmentServicesButton />
 
-                                    <Text>Housing Services</Text>
+                                <LegalServicesButton />
 
-                                </TouchableOpacity>
-
-                                <TouchableOpacity 
-                                    style={ styles.categoryButton }
-                                    onPres={() => { }}    
-                                >
-                                    <TouchableOpacity 
-                                        style={ styles.favoriteButton }
-                                        onPress={() => { }}
-                                    ></TouchableOpacity>
-
-                                    <Text>Housing Services</Text>
-                                </TouchableOpacity>
+                                <UtiliesServicesButton />
 
                             </View>
 
                             {/* col 3 */}
                             <View style={ styles.categoryButtonCol }>
 
-                                <TouchableOpacity 
-                                    style={ styles.categoryButton }
-                                    onPres={() => { }}    
-                                >   
-                                    {/* the button to add a category to the favorites section */}
-                                    <TouchableOpacity 
-                                        style={ styles.favoriteButton }
-                                        onPress={() => { }}
-                                    ></TouchableOpacity>
+                                
+                                <DonationCenterButton />
 
-                                    <Text>Housing Services</Text>
-                                </TouchableOpacity>
+                                <FoodServicesButton />
 
-                                <TouchableOpacity 
-                                    style={ styles.categoryButton }
-                                    onPres={() => { }}    
-                                >
-                                    <TouchableOpacity 
-                                        style={ styles.favoriteButton }
-                                        onPress={() => { }}
-                                    ></TouchableOpacity>
+                                <HealthServicesButton />
 
-                                    <Text>Housing Services</Text>
-
-                                </TouchableOpacity>
-
-                                <TouchableOpacity 
-                                    style={ styles.categoryButton }
-                                    onPres={() => { }}    
-                                >
-                                    <TouchableOpacity 
-                                        style={ styles.favoriteButton }
-                                        onPress={() => { }}
-                                    ></TouchableOpacity>
-
-                                    <Text>Housing Services</Text>
-                                </TouchableOpacity>
-
+                                <LGBTQServicesButton />
                                 
 
                             </View>
@@ -272,10 +186,6 @@ const ResourcesScreen = () => {
 
                 </View>
                 
-                {/* nav bar container */}
-                <View>
-                    <NavBar />
-                </View>
 
             </View>
             

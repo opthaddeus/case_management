@@ -56,7 +56,6 @@ const styles = StyleSheet.create( {
         borderWidth: 1,
         flexGrow: 1,
         flexDirection: 'row',
-        justifyContent: 'flex-start',
     },
     categoriesContainer: {
         borderColor: 'green',
