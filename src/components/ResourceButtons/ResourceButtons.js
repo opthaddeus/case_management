@@ -12,7 +12,6 @@ const AppointmentsServicesButton = () => {
 
     return (
         <View>
-            {/* favorite button section */}
             <TouchableOpacity
                 style={ styles.favoriteButton }
                 onPress={() => { 
@@ -21,13 +20,11 @@ const AppointmentsServicesButton = () => {
                 }}
             />
 
-            {/* resource button section */}
             <TouchableOpacity
                 style={ styles.categoryButton }
                 onPress={ () => {
                     navigation.replace("AppointmentsScreen") 
-                }}
-            >
+                }}>
                 <Text>Appointment Services</Text>
             </TouchableOpacity>
         </View>
@@ -342,7 +339,7 @@ const LGBTQServicesButton = () => {
 
             {/* resource button section */}
             <TouchableOpacity
-                style={ styles.categoryButton }
+                style={styles.categoryButton}
                 onPress={ () => {
                     navigation.replace("LGBTQServicesScreen") 
                 }}

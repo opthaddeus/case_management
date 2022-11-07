@@ -15,18 +15,13 @@ const styles = StyleSheet.create( {
     categoryButton: {
         borderColor: 'black',
         borderWidth: 1,
+        marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'center',
         width: 80,
         height: 80,
+        borderRadius: 10,
     },
-    favoriteButton: {
-        borderColor: 'red',
-        borderWidth: 1,
-        height: 15,
-        width: 15,
-        borderRadius: 7,
-    }
 } );
 
 export { styles };
