@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
 import ThaddeusHorizontalSVG from '../../../assets/images/thaddeus_logo_horizontal.svg';
+import ForgotPasswordSVG from '../../../assets/images/forgot_password_screen_cartoon.svg';
 
 import { TextInput } from "react-native-gesture-handler";
 import { auth } from "../../../firebase/firebase";
@@ -40,7 +41,7 @@ export default function ForgotPasswordScreen() {
 
 
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
+        <SafeAreaView style={{ flex: 1, justifyContent: 'center', backgroundColor: 'white' }}>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', paddingHorizontal: 25, }}>
                 <TouchableOpacity
                     style={{ flexDirection: 'row', justifyContent: 'center', }}
@@ -49,26 +50,24 @@ export default function ForgotPasswordScreen() {
                     <Ionicons
                         name='arrow-back-outline'
                         size={22}
+                        color='#FF1493'
                     />
                     <Text style={{
                         textAlign: 'center',
                         fontWeight: '700',
                         fontSize: 20,
-                        color: 'black',
+                        color: '#FF1493',
                         paddingLeft: 5
                     }}>
                         Back
                     </Text>
                 </TouchableOpacity>
             </View>
+            
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-start' }}>
+                <ForgotPasswordSVG />
+            </View> 
 
-            <View style={{ alignItems: 'center', marginBottom: 50, paddingHorizontal: 25 }}>
-                <ThaddeusHorizontalSVG
-                    height={150}
-                    width={'120%'}
-                    fill='black'
-                />
-            </View>
             <View style={{ paddingHorizontal: 25 }}>
                 <Text
                     style={{
@@ -76,7 +75,7 @@ export default function ForgotPasswordScreen() {
                         fontSize: 28,
                         fontWeight: '500',
                         color: '#333',
-                        marginBottom: 15,
+                        marginTop: 10,
                     }}>
                     Forgot Password
                 </Text>
@@ -86,7 +85,7 @@ export default function ForgotPasswordScreen() {
                         fontSize: 15,
                         fontWeight: '500',
                         color: '#333',
-                        marginBottom: 50,
+                        marginTop: 10,
                     }}>
                     Please enter your email address. You will
                     receive a link to create a new password via email
@@ -97,7 +96,7 @@ export default function ForgotPasswordScreen() {
                     borderBottomColor: '#ccc',
                     borderBottomWidth: 1,
                     paddingBottom: 8,
-                    marginBottom: 25
+                    marginTop: 25
                 }}>
                     <Ionicons
                         name='mail-outline'
@@ -115,24 +114,33 @@ export default function ForgotPasswordScreen() {
                         autoCorrect={false}
                     />
                 </View>
-                <View style={{ marginBottom: 150 }}>
+                <View style={{ marginTop: 30 }}>
                     <TouchableOpacity
                         onPress={handleForgotPassword}
                         style={{
                             backgroundColor: '#00BFFF',
                             padding: 20,
                             borderRadius: 10,
-                            marginBottom: 30,
+                            marginTop: 30,
                         }}>
                         <Text style={{
                             textAlign: 'center',
                             fontWeight: '700',
                             fontSize: 16,
-                            color: '#fff'
+                            color: '#fff',
+                            fontFamily: 'Montserrat-Black',
                         }}>
                             Send verification link
                         </Text>
                     </TouchableOpacity>
+                </View>
+
+                <View style={{ alignItems: 'center', marginTop: 40, paddingHorizontal: 25 }}>
+                    <ThaddeusHorizontalSVG
+                        height={100}
+                        width={'50%'}
+                        fill='black'
+                    />
                 </View>
             </View>
         </SafeAreaView>

@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
 import ThaddeusHorizontalSVG from '../../../assets/images/thaddeus_logo_horizontal.svg';
+import LoginPageSVG from '../../../assets/images/login_page_cartoon.svg';
 
 import { TextInput } from "react-native-gesture-handler";
 import { AuthContext } from "../../../Navigation/AuthProvider";
@@ -33,15 +34,11 @@ export default function LoginScreen() {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
-            <View style={{ alignItems: 'center', marginBottom: 116, paddingHorizontal: 25 }}>
-
-                <ThaddeusHorizontalSVG
-                    height={150}
-                    width={'120%'}
-                    fill='black'
-                />
+        <SafeAreaView style={{ flex: 1, justifyContent: 'center', backgroundColor: 'white'}}>
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-start' }}>
+                <LoginPageSVG/>
             </View>
+
             <View style={{ paddingHorizontal: 25 }}>
                 <Text
                     style={{
@@ -49,7 +46,7 @@ export default function LoginScreen() {
                         fontSize: 28,
                         fontWeight: '500',
                         color: '#333',
-                        marginBottom: 30,
+                        marginTop: 10,
                     }}>
                     Login
                 </Text>
@@ -59,7 +56,7 @@ export default function LoginScreen() {
                     borderBottomColor: '#ccc',
                     borderBottomWidth: 1,
                     paddingBottom: 8,
-                    marginBottom: 25
+                    marginTop: 25
                 }}>
                     <Ionicons
                         name='mail-outline'
@@ -83,7 +80,7 @@ export default function LoginScreen() {
                     borderBottomColor: '#ccc',
                     borderBottomWidth: 1,
                     paddingBottom: 8,
-                    marginBottom: 25
+                    marginTop: 25
                 }}>
                     <Ionicons
                         name='lock-closed-outline'
@@ -101,7 +98,7 @@ export default function LoginScreen() {
                     <TouchableOpacity
                         onPress={handleForgotPasswordScreen}
                     >
-                        <Text style={{ color: '#00BFFF', fontWeight: '700' }}>Forgot?</Text>
+                        <Text style={{ fontFamily: 'Montserrat-Black',color: '#00BFFF', fontWeight: '700' }}>Forgot?</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -111,23 +108,32 @@ export default function LoginScreen() {
                         backgroundColor: '#00BFFF',
                         padding: 20,
                         borderRadius: 10,
-                        marginBottom: 30,
+                        marginTop: 30,
                     }}>
                     <Text style={{
                         textAlign: 'center',
                         fontWeight: '700',
                         fontSize: 16,
-                        color: '#fff'
+                        color: '#fff',
+                        fontFamily: 'Montserrat-Black',
                     }}>
                         Login
                     </Text>
                 </TouchableOpacity>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 30 }}>
-                    <Text style={{ marginRight: 10, fontWeight: '700' }}>New to Thaddeus Resources?</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 30 }}>
+                    <Text style={{ fontFamily: 'Montserrat-Black', marginRight: 10, fontWeight: '700' }}>New to Thaddeus Resources?</Text>
                     <TouchableOpacity onPress={handleRegistrationScreen}>
-                        <Text style={{ color: '#00BFFF', fontWeight: '700' }}>Register</Text>
+                        <Text style={{ fontFamily: 'Montserrat-Black', color: '#FF1493', fontWeight: '700' }}>Register</Text>
                     </TouchableOpacity>
+                </View>
+
+                <View style={{ alignItems: 'center', marginTop: 40, paddingHorizontal: 25 }}>
+                    <ThaddeusHorizontalSVG
+                        height={100}
+                        width={'50%'}
+                        fill='black'
+                    />
                 </View>
 
             </View>
